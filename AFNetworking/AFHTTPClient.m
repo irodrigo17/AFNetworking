@@ -176,7 +176,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 #pragma mark -
 
 @interface AFHTTPClient ()
-@property (readwrite, nonatomic) NSURL *baseURL;
+@property (strong, readwrite, nonatomic) NSURL *baseURL;
 @property (strong, readwrite, nonatomic) NSMutableArray *registeredHTTPOperationClassNames;
 @property (strong, readwrite, nonatomic) NSMutableDictionary *defaultHeaders;
 @property (strong, readwrite, nonatomic) NSURLCredential *defaultCredential;
@@ -204,6 +204,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 @synthesize networkReachability = _networkReachability;
 @synthesize networkReachabilityStatus = _networkReachabilityStatus;
 @synthesize networkReachabilityStatusBlock = _networkReachabilityStatusBlock;
+@synthesize defaultCredential = _defaultCredential;
 #endif
 
 + (AFHTTPClient*)clientWithBaseURL:(NSURL *)url {
@@ -1132,6 +1133,8 @@ typedef enum {
         case NSStreamStatusAtEnd:
         case NSStreamStatusClosed:
         case NSStreamStatusError:
+            return NO;
+        default:
             return NO;
     }
 }
