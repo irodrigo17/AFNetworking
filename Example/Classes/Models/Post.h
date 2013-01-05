@@ -27,9 +27,9 @@
 @interface Post : NSObject
 
 @property (readonly) NSUInteger postID;
-@property (readonly) NSString *text;
+@property (strong, readonly) NSString *text;
 
-@property (readonly) User *user;
+@property (strong, readonly) User *user;
 
 - (id)initWithAttributes:(NSDictionary *)attributes;
 

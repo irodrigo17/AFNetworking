@@ -66,7 +66,7 @@
  
  @return A new XML request operation
  */
-+ (instancetype)XMLParserRequestOperationWithRequest:(NSURLRequest *)urlRequest
++ (AFXMLRequestOperation*)XMLParserRequestOperationWithRequest:(NSURLRequest *)urlRequest
 											 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSXMLParser *XMLParser))success
 											 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, NSXMLParser *XMLParser))failure;
 

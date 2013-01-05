@@ -76,7 +76,7 @@
  @return A new image request operation
  */
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-+ (instancetype)imageRequestOperationWithRequest:(NSURLRequest *)urlRequest                
++ (AFImageRequestOperation*)imageRequestOperationWithRequest:(NSURLRequest *)urlRequest                
 										 success:(void (^)(UIImage *image))success;
 #elif defined(__MAC_OS_X_VERSION_MIN_REQUIRED)
 + (instancetype)imageRequestOperationWithRequest:(NSURLRequest *)urlRequest                
@@ -94,7 +94,7 @@
  @return A new image request operation
  */
 #if defined(__IPHONE_OS_VERSION_MIN_REQUIRED)
-+ (instancetype)imageRequestOperationWithRequest:(NSURLRequest *)urlRequest
++ (AFImageRequestOperation*)imageRequestOperationWithRequest:(NSURLRequest *)urlRequest
 							imageProcessingBlock:(UIImage *(^)(UIImage *image))imageProcessingBlock
 										 success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, UIImage *image))success
 										 failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error))failure;

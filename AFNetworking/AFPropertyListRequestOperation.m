@@ -34,7 +34,7 @@ static dispatch_queue_t property_list_request_operation_processing_queue() {
 @interface AFPropertyListRequestOperation ()
 @property (readwrite, nonatomic) id responsePropertyList;
 @property (readwrite, nonatomic, assign) NSPropertyListFormat propertyListFormat;
-@property (readwrite, nonatomic) NSError *propertyListError;
+@property (strong, readwrite, nonatomic) NSError *propertyListError;
 @end
 
 @implementation AFPropertyListRequestOperation
@@ -43,7 +43,7 @@ static dispatch_queue_t property_list_request_operation_processing_queue() {
 @synthesize propertyListFormat = _propertyListFormat;
 @synthesize propertyListError = _propertyListError;
 
-+ (instancetype)propertyListRequestOperationWithRequest:(NSURLRequest *)request
++ (AFPropertyListRequestOperation*)propertyListRequestOperationWithRequest:(NSURLRequest *)request
 												success:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, id propertyList))success
 												failure:(void (^)(NSURLRequest *request, NSHTTPURLResponse *response, NSError *error, id propertyList))failure
 {

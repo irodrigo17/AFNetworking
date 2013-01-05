@@ -177,10 +177,10 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 
 @interface AFHTTPClient ()
 @property (readwrite, nonatomic) NSURL *baseURL;
-@property (readwrite, nonatomic) NSMutableArray *registeredHTTPOperationClassNames;
-@property (readwrite, nonatomic) NSMutableDictionary *defaultHeaders;
-@property (readwrite, nonatomic) NSURLCredential *defaultCredential;
-@property (readwrite, nonatomic) NSOperationQueue *operationQueue;
+@property (strong, readwrite, nonatomic) NSMutableArray *registeredHTTPOperationClassNames;
+@property (strong, readwrite, nonatomic) NSMutableDictionary *defaultHeaders;
+@property (strong, readwrite, nonatomic) NSURLCredential *defaultCredential;
+@property (strong, readwrite, nonatomic) NSOperationQueue *operationQueue;
 #ifdef _SYSTEMCONFIGURATION_H
 @property (readwrite, nonatomic, assign) AFNetworkReachabilityRef networkReachability;
 @property (readwrite, nonatomic, assign) AFNetworkReachabilityStatus networkReachabilityStatus;
@@ -206,7 +206,7 @@ NSArray * AFQueryStringPairsFromKeyAndValue(NSString *key, id value) {
 @synthesize networkReachabilityStatusBlock = _networkReachabilityStatusBlock;
 #endif
 
-+ (instancetype)clientWithBaseURL:(NSURL *)url {
++ (AFHTTPClient*)clientWithBaseURL:(NSURL *)url {
     return [[self alloc] initWithBaseURL:url];
 }
 
@@ -1057,6 +1057,10 @@ typedef enum {
 }
 
 - (BOOL)transitionToNextPhase;
+
+- (NSInteger)readData:(NSData *)data
+           intoBuffer:(uint8_t *)buffer
+            maxLength:(NSUInteger)length;
 @end
 
 @implementation AFHTTPBodyPart
